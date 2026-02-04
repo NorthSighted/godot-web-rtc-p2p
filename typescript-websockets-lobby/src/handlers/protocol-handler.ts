@@ -101,7 +101,7 @@ export class ProtocolHelper {
 				case EAction.Offer:
 				case EAction.Answer:
 				case EAction.Candidate:
-					// console.log('DEBUG OFFER', gameServer, clientSocket, message)
+					console.log('DEBUG OFFER', gameServer, clientSocket, message)
 					ProtocolHelper.sendOfferAnswerOrCandidate(gameServer, clientSocket, message);
 					break;
 				case EAction.KickPlayer:
@@ -468,6 +468,7 @@ export class ProtocolHelper {
 	// NEW: TODO: should basically spread whatever info we give it... "meta" property for generic usage?
 	public static playerUpdateInfo(gameServer: GameServerHandler, clientSocket: ClientSocket, message: Message) {
 		try {
+			console.log('UPDATE MESSAGE:', message);
 			if (message.payload.metadata) {
 				clientSocket.metadata = { ...clientSocket.metadata, ...message.payload.metadata };
 			}
